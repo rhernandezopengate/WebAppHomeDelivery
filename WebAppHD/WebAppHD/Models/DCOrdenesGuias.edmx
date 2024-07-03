@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_A3F19C_OGModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hd_ordenes_guias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="Guia" Type="varchar" MaxLength="50" />
+          <Property Name="Orden" Type="varchar" MaxLength="50" />
+          <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="hd_status_ordenes_guias_Id" Type="int" Nullable="false" />
+          <Property Name="FechaCierre" Type="datetime" />
+        </EntityType>
+        <EntityType Name="hd_status_ordenes_guias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="hd_ordenes_guias_AspNetUsers_FK">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="hd_ordenes_guias" Type="Self.hd_ordenes_guias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hd_ordenes_guias">
+              <PropertyRef Name="AspNetUsers_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="hd_ordenes_guias_hd_status_ordenes_guias_FK">
+          <End Role="hd_status_ordenes_guias" Type="Self.hd_status_ordenes_guias" Multiplicity="1" />
+          <End Role="hd_ordenes_guias" Type="Self.hd_ordenes_guias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hd_status_ordenes_guias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hd_ordenes_guias">
+              <PropertyRef Name="hd_status_ordenes_guias_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_A3F19C_OGModel1StoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hd_ordenes_guias" EntityType="Self.hd_ordenes_guias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hd_status_ordenes_guias" EntityType="Self.hd_status_ordenes_guias" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="hd_ordenes_guias_AspNetUsers_FK" Association="Self.hd_ordenes_guias_AspNetUsers_FK">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="hd_ordenes_guias" EntitySet="hd_ordenes_guias" />
+          </AssociationSet>
+          <AssociationSet Name="hd_ordenes_guias_hd_status_ordenes_guias_FK" Association="Self.hd_ordenes_guias_hd_status_ordenes_guias_FK">
+            <End Role="hd_status_ordenes_guias" EntitySet="hd_status_ordenes_guias" />
+            <End Role="hd_ordenes_guias" EntitySet="hd_ordenes_guias" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_A3F19C_OGModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="hd_status_ordenes_guias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="hd_ordenes_guias" Relationship="DB_A3F19C_OGModel1.hd_ordenes_guias_hd_status_ordenes_guias_FK" FromRole="hd_status_ordenes_guias" ToRole="hd_ordenes_guias" />
+        </EntityType>
+        <EntityContainer Name="DB_A3F19C_OGEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="hd_status_ordenes_guias" EntityType="Self.hd_status_ordenes_guias" />
+          <EntitySet Name="AspNetUsers" EntityType="DB_A3F19C_OGModel1.AspNetUsers" />
+          <EntitySet Name="hd_ordenes_guias" EntityType="DB_A3F19C_OGModel1.hd_ordenes_guias" />
+          <AssociationSet Name="hd_ordenes_guias_AspNetUsers_FK" Association="DB_A3F19C_OGModel1.hd_ordenes_guias_AspNetUsers_FK">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="hd_ordenes_guias" EntitySet="hd_ordenes_guias" />
+          </AssociationSet>
+          <AssociationSet Name="hd_ordenes_guias_hd_status_ordenes_guias_FK" Association="DB_A3F19C_OGModel1.hd_ordenes_guias_hd_status_ordenes_guias_FK">
+            <End Role="hd_status_ordenes_guias" EntitySet="hd_status_ordenes_guias" />
+            <End Role="hd_ordenes_guias" EntitySet="hd_ordenes_guias" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="hd_ordenes_guias" Relationship="DB_A3F19C_OGModel1.hd_ordenes_guias_AspNetUsers_FK" FromRole="AspNetUsers" ToRole="hd_ordenes_guias" />
+        </EntityType>
+        <EntityType Name="hd_ordenes_guias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="Guia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AspNetUsers_Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="hd_status_ordenes_guias_Id" Type="Int32" Nullable="false" />
+          <Property Name="FechaCierre" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_OGModel1.hd_ordenes_guias_AspNetUsers_FK" FromRole="hd_ordenes_guias" ToRole="AspNetUsers" />
+          <NavigationProperty Name="hd_status_ordenes_guias" Relationship="DB_A3F19C_OGModel1.hd_ordenes_guias_hd_status_ordenes_guias_FK" FromRole="hd_ordenes_guias" ToRole="hd_status_ordenes_guias" />
+        </EntityType>
+        <Association Name="hd_ordenes_guias_AspNetUsers_FK">
+          <End Type="DB_A3F19C_OGModel1.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel1.hd_ordenes_guias" Role="hd_ordenes_guias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hd_ordenes_guias">
+              <PropertyRef Name="AspNetUsers_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="hd_ordenes_guias_hd_status_ordenes_guias_FK">
+          <End Type="DB_A3F19C_OGModel1.hd_status_ordenes_guias" Role="hd_status_ordenes_guias" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel1.hd_ordenes_guias" Role="hd_ordenes_guias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hd_status_ordenes_guias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hd_ordenes_guias">
+              <PropertyRef Name="hd_status_ordenes_guias_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_A3F19C_OGModel1StoreContainer" CdmEntityContainer="DB_A3F19C_OGEntities1">
+          <EntitySetMapping Name="hd_status_ordenes_guias">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel1.hd_status_ordenes_guias">
+              <MappingFragment StoreEntitySet="hd_status_ordenes_guias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel1.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hd_ordenes_guias">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel1.hd_ordenes_guias">
+              <MappingFragment StoreEntitySet="hd_ordenes_guias">
+                <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+                <ScalarProperty Name="hd_status_ordenes_guias_Id" ColumnName="hd_status_ordenes_guias_Id" />
+                <ScalarProperty Name="AspNetUsers_Id" ColumnName="AspNetUsers_Id" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Guia" ColumnName="Guia" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

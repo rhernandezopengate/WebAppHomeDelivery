@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "CargarConciliador";
+}
+
+<br />
+
+@using (Html.BeginForm("CargarConciliador", "conciliador", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading"><b>Cargar Conciliador </b></div>
+        <div class="panel-body">
+            <div class="form-inline">
+                <div class="form-group">
+                    <input type="file" name="postedFileBase" class="form-control" />
+                </div>
+                <input type="submit" value="Validar" class="btn btn-primary" />
+                <a class="btn btn-danger" href="@Url.Action("Index", "reportes")">
+                    <i class="glyphicon glyphicon-remove-sign"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (ViewBag.Mensaje == "Inicio")
+{
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <strong>Cargue la Informacion!</strong>
+    </div>
+}
+else if (ViewBag.Mensaje == "Correcto")
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <strong>Excelente!</strong> La informacion ha sido cargada correctamente.
+    </div>
+}
+else
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <strong>Error de sistema!</strong> @ViewBag.Mensaje
+    </div>
+}
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $(this).html('Loading...');
+                $(this).addClass('disabled');
+            });
+        });
+    </script>
+}

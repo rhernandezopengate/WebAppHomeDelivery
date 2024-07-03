@@ -1,0 +1,30 @@
+﻿@model List<WebAppHD.Models.DashboardGraficaPuntos>
+
+@{
+    ViewBag.Title = "Productividades";
+    Layout = null;
+}
+
+<table class="table table-bordered text-center">
+    <thead class="text-center">
+        <tr>
+            <th style="text-align:center">Fecha</th>
+            <th style="text-align:center">Ordenes</th>
+            <th style="text-align:center">SKU</th>
+            <th style="text-align:center">Piezas</th>
+            <th style="text-align:center">Lineas</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Fecha</td>
+                <td>@item.QtyOrdenes</td>
+                <td>@item.QtySku</td>
+                <td>@item.QtyPiezas</td>
+                <td>@item.Lineas</td>
+            </tr>
+        }
+    </tbody>
+</table>

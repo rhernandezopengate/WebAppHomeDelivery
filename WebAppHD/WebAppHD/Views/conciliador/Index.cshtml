@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <b> Busqueda Ordenes</b>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-3">
+                <input type="text" id="txtOrden" placeholder="Orden" class="form-control" autocomplete="off" />
+            </div>
+            <div class="col-lg-3">
+                <input type="text" id="txtGuia" placeholder="Guia" class="form-control" autocomplete="off" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<table id="tblBusquedaOrdenes" class="table table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Orden</th>
+            <th>Guia</th>
+        </tr>
+    </thead>
+</table>
+
+<!-- CSS -->
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+@section Scripts
+{
+    <!-- JS -->
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
+
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script src="~/Scripts/toastr.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            table = $('#tblBusquedaOrdenes').DataTable({
+                "order": [[0, "desc"]],
+                "ordering": true,
+                "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                "pagingType": 'full_numbers',
+                "pageLength": 5,
+                "language": {
+                    oPaginate: {
+                        sNext: '<i class="fa fa-forward">>></i>',
+                        sPrevious: '<i class="fa fa-backward"><<</i>',
+                        sFirst: '<i class="fa fa-step-backward">Primero</i>',
+                        sLast: '<i class="fa fa-step-forward">Ultimo</i>'
+                    }
+                },
+                "dom": 'Blrtip',
+                "processing": true,
+                "serverSide": true,
+                "deferRender": true,
+                "rowId": 'Id',
+                "buttons": [
+                    {
+                        extend: 'excelHtml5',
+
+                    },
+                ],
+                "ajax": {
+                    "url": "/conciliador/BusquedaOrdenesGuias",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "aoColumns": [
+                    {
+                        "data": "Id",
+                        "autoWidth": false,
+                        "sWidth": "3%",
+                        "visible": false
+                    },                    
+                    {
+                        "data": "Orden",
+                        "autoWidth": false,
+                        "sWidth": "10%"
+                    },
+                    {
+                        "data": "Guia",
+                        "autoWidth": false,
+                        "sWidth": "15%"
+                    },
+                ]
+            });
+
+            $('#txtOrden').on('keyup', function () {
+                table.columns(0).search(this.value).draw();
+            });
+
+            $('#txtGuia').on('change', function () {
+                table.columns(1).search(this.value).draw();
+            });
+        });      
+
+    </script>
+}

@@ -1,0 +1,89 @@
+﻿@model WebAppHD.Models.hd_ordenes_guias
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Editar Orden</h4>
+        <h4> 
+            <label>@Model.Orden</label>
+        </h4>        
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.AspNetUsers_Id)
+            @Html.HiddenFor(model => model.FechaAlta)
+            @Html.HiddenFor(model => model.FechaCierre)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Orden, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Orden, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Orden, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Guia </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Guia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Guia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @if (User.IsInRole("admin"))
+            {
+                <div class="form-group">
+                    <label class="control-label col-md-2">Estatus </label>                    
+                    <div class="col-md-10">
+                        @Html.DropDownList("hd_status_ordenes_guias_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.hd_status_ordenes_guias_Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("supervisorhd"))
+            {
+                <div class="form-group">
+                    <label class="control-label col-md-2">Status </label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("hd_status_ordenes_guias_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.hd_status_ordenes_guias_Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("auxiliarhd")) 
+            {
+                <div class="form-group">
+                    <label class="control-label col-md-2">Status </label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("hd_status_ordenes_guias_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.hd_status_ordenes_guias_Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>    
+    <div class="modal-footer">    
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>        
+        <input type="submit" value="Save" class="btn btn-primary" />        
+    </div>        
+}
+
+<style>
+    .form-horizontal {
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+    }
+</style>

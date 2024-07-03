@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_A3F19C_OGModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="hd_ordenes_guias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="Guia" Type="varchar" MaxLength="50" />
+    <Property Name="Orden" Type="varchar" MaxLength="50" />
+    <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="hd_status_ordenes_guias_Id" Type="int" Nullable="false" />
+    <Property Name="FechaCierre" Type="datetime" />
+  </EntityType>
+  <EntityType Name="hd_status_ordenes_guias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="hd_ordenes_guias_AspNetUsers_FK">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="hd_ordenes_guias" Type="Self.hd_ordenes_guias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hd_ordenes_guias">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hd_ordenes_guias_hd_status_ordenes_guias_FK">
+    <End Role="hd_status_ordenes_guias" Type="Self.hd_status_ordenes_guias" Multiplicity="1" />
+    <End Role="hd_ordenes_guias" Type="Self.hd_ordenes_guias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hd_status_ordenes_guias">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hd_ordenes_guias">
+        <PropertyRef Name="hd_status_ordenes_guias_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_A3F19C_OGModel1StoreContainer">
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hd_ordenes_guias" EntityType="Self.hd_ordenes_guias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hd_status_ordenes_guias" EntityType="Self.hd_status_ordenes_guias" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="hd_ordenes_guias_AspNetUsers_FK" Association="Self.hd_ordenes_guias_AspNetUsers_FK">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="hd_ordenes_guias" EntitySet="hd_ordenes_guias" />
+    </AssociationSet>
+    <AssociationSet Name="hd_ordenes_guias_hd_status_ordenes_guias_FK" Association="Self.hd_ordenes_guias_hd_status_ordenes_guias_FK">
+      <End Role="hd_status_ordenes_guias" EntitySet="hd_status_ordenes_guias" />
+      <End Role="hd_ordenes_guias" EntitySet="hd_ordenes_guias" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

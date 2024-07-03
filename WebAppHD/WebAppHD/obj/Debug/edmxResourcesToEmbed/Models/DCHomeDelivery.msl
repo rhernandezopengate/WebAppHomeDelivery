@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_A3F19C_OGModelStoreContainer" CdmEntityContainer="DB_A3F19C_OGEntities">
+    <EntitySetMapping Name="ordenes">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.ordenes">
+        <MappingFragment StoreEntitySet="ordenes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="Orden" ColumnName="Orden" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="StatusOrdenImpresa_Id" ColumnName="StatusOrdenImpresa_Id" />
+          <ScalarProperty Name="Picker" ColumnName="Picker" />
+          <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="statusordenimpresa">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.statusordenimpresa">
+        <MappingFragment StoreEntitySet="statusordenimpresa">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="codigoqrordenes">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.codigoqrordenes">
+        <MappingFragment StoreEntitySet="codigoqrordenes">
+          <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+          <ScalarProperty Name="CodigoQR" ColumnName="CodigoQR" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detordenproductoshd">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.detordenproductoshd">
+        <MappingFragment StoreEntitySet="detordenproductoshd">
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="Skus_Id" ColumnName="Skus_Id" />
+          <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="erroresordenes">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.erroresordenes">
+        <MappingFragment StoreEntitySet="erroresordenes">
+          <ScalarProperty Name="TipoError_Id" ColumnName="TipoError_Id" />
+          <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoerror">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.tipoerror">
+        <MappingFragment StoreEntitySet="tipoerror">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="guias">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.guias">
+        <MappingFragment StoreEntitySet="guias">
+          <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+          <ScalarProperty Name="Guia" ColumnName="Guia" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="skusbenavides">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.skusbenavides">
+        <MappingFragment StoreEntitySet="skusbenavides">
+          <ScalarProperty Name="skus_Id" ColumnName="skus_Id" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detusuariosordenes">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.detusuariosordenes">
+        <MappingFragment StoreEntitySet="detusuariosordenes">
+          <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+          <ScalarProperty Name="Usuarios_Id" ColumnName="Usuarios_Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="tipousuario" ColumnName="tipousuario" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detkitskus">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.detkitskus">
+        <MappingFragment StoreEntitySet="detkitskus">
+          <ScalarProperty Name="Skus_Id" ColumnName="Skus_Id" />
+          <ScalarProperty Name="Kit_Id" ColumnName="Kit_Id" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kit">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.kit">
+        <MappingFragment StoreEntitySet="kit">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="csr">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.csr">
+        <MappingFragment StoreEntitySet="csr">
+          <ScalarProperty Name="FechaCarga" ColumnName="FechaCarga" />
+          <ScalarProperty Name="detalleultimocheckpoint" ColumnName="detalleultimocheckpoint" />
+          <ScalarProperty Name="HoraUltimoCheckpoint" ColumnName="HoraUltimoCheckpoint" />
+          <ScalarProperty Name="FechaUltimoCheckpoint" ColumnName="FechaUltimoCheckpoint" />
+          <ScalarProperty Name="UltimoCheckpoint" ColumnName="UltimoCheckpoint" />
+          <ScalarProperty Name="CPDestinatario" ColumnName="CPDestinatario" />
+          <ScalarProperty Name="DireccionDestinatario" ColumnName="DireccionDestinatario" />
+          <ScalarProperty Name="ContactoDestinatario" ColumnName="ContactoDestinatario" />
+          <ScalarProperty Name="NombreDestinatario" ColumnName="NombreDestinatario" />
+          <ScalarProperty Name="CPRemitente" ColumnName="CPRemitente" />
+          <ScalarProperty Name="DireccionRemitente" ColumnName="DireccionRemitente" />
+          <ScalarProperty Name="ContactoRemitente" ColumnName="ContactoRemitente" />
+          <ScalarProperty Name="NombreRemitente" ColumnName="NombreRemitente" />
+          <ScalarProperty Name="ValorSeguro" ColumnName="ValorSeguro" />
+          <ScalarProperty Name="Producto" ColumnName="Producto" />
+          <ScalarProperty Name="DiasCC" ColumnName="DiasCC" />
+          <ScalarProperty Name="FechaIngresoCC" ColumnName="FechaIngresoCC" />
+          <ScalarProperty Name="CausaDemora" ColumnName="CausaDemora" />
+          <ScalarProperty Name="IntentosEntrega" ColumnName="IntentosEntrega" />
+          <ScalarProperty Name="TiempoTransitoRealizado" ColumnName="TiempoTransitoRealizado" />
+          <ScalarProperty Name="TiempoTransitoEstimado" ColumnName="TiempoTransitoEstimado" />
+          <ScalarProperty Name="DetallesEntregaComentarios" ColumnName="DetallesEntregaComentarios" />
+          <ScalarProperty Name="DescripcionPrimerCheckTerminal" ColumnName="DescripcionPrimerCheckTerminal" />
+          <ScalarProperty Name="PrimerCheckpointTerminal" ColumnName="PrimerCheckpointTerminal" />
+          <ScalarProperty Name="HoraPrimerCheckpointTerminal" ColumnName="HoraPrimerCheckpointTerminal" />
+          <ScalarProperty Name="FechaPrimerCheckpointTerminal" ColumnName="FechaPrimerCheckpointTerminal" />
+          <ScalarProperty Name="FechaRecoleccion" ColumnName="FechaRecoleccion" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="Piezas" ColumnName="Piezas" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="SVCSubIATA" ColumnName="SVCSubIATA" />
+          <ScalarProperty Name="CiudadDestino" ColumnName="CiudadDestino" />
+          <ScalarProperty Name="IATADestino" ColumnName="IATADestino" />
+          <ScalarProperty Name="CiudadOrigen" ColumnName="CiudadOrigen" />
+          <ScalarProperty Name="IATAOrigen" ColumnName="IATAOrigen" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="PieceID" ColumnName="PieceID" />
+          <ScalarProperty Name="Guia" ColumnName="Guia" />
+          <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rt_det_paquetes_skus">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.rt_det_paquetes_skus">
+        <MappingFragment StoreEntitySet="rt_det_paquetes_skus">
+          <ScalarProperty Name="skus_Id" ColumnName="skus_Id" />
+          <ScalarProperty Name="rt_paquete_Id" ColumnName="rt_paquete_Id" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rt_paquete">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.rt_paquete">
+        <MappingFragment StoreEntitySet="rt_paquete">
+          <ScalarProperty Name="Paquete" ColumnName="Paquete" />
+          <ScalarProperty Name="Guia" ColumnName="Guia" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="skus">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.skus">
+        <MappingFragment StoreEntitySet="skus">
+          <ScalarProperty Name="kit" ColumnName="kit" />
+          <ScalarProperty Name="qtymanual" ColumnName="qtymanual" />
+          <ScalarProperty Name="codigobidimensional" ColumnName="codigobidimensional" />
+          <ScalarProperty Name="codigobarras" ColumnName="codigobarras" />
+          <ScalarProperty Name="uom" ColumnName="uom" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Sku" ColumnName="Sku" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pickers">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.pickers">
+        <MappingFragment StoreEntitySet="pickers">
+          <ScalarProperty Name="statuspickers_Id" ColumnName="statuspickers_Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="statuspickers">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.statuspickers">
+        <MappingFragment StoreEntitySet="statuspickers">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

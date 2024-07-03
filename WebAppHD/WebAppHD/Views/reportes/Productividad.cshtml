@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "Productividad";
+}
+
+<br />
+<center>
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><b> O. Cerradas</b></h4>
+                </div>
+                <div class="panel-body">
+                    <h2>@ViewBag.OrdenesCerradas</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><b>Otros</b></h4>
+                </div>
+                <div class="panel-body">
+                    <h2>@ViewBag.OtrosStatus</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><b> O. Abiertas</b></h4>
+                </div>
+                <div class="panel-body">
+                    <h2>@ViewBag.OrdenesAbiertas</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h4><b> Total de Ordenes</b></h4>
+                </div>
+                <div class="panel-body">
+                    <h2>@ViewBag.OrdenesTotales</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><b>Piezas Auditadas</b></h4>
+                </div>
+                <div class="panel-body">
+                    <h2>@ViewBag.PiezasAuditadas</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+<div class="row">
+    <div class="col-lg-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Picker</th>
+                    <th>Piezas</th>
+                    <th>Errores</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in ViewBag.Tabla)
+                { 
+                <tr>
+                    <td>@employee.Picker</td>
+                    <td style="text-align:center">@employee.QtyPiezas</td>
+                    <td style="text-align:center">
+                        <span class="badge badge-primary">@employee.QtyErrores</span>
+                    </td>
+                </tr>
+                }   
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-8">
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
+    <script>
+
+		var chart;
+
+		window.onload = function () {
+			chart = new CanvasJS.Chart("chartContainer", {
+				animationEnabled: true,
+				theme: "light2", // "light1", "light2", "dark1", "dark2"
+				title: {
+					text: "Productividad de Pickers"
+				},
+				axisY: {
+					title: "No. de Ordenes Surtidas"
+				},
+				data: [{
+					type: "column",
+					yValueFormatString: "#,##0 ",
+					indexLabel: "{y}",
+					dataPoints: @Html.Raw(ViewBag.DataPoints),
+				}]
+			});
+			chart.render();
+		}
+
+		setInterval(function () {
+			location.reload();
+		}, 20000);
+
+    </script>
+}

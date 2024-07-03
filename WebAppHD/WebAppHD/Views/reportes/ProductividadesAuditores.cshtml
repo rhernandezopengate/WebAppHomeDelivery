@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Auditor</th>
+            <th>Ordenes</th>
+            <th>Piezas</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in ViewBag.TablaAuditores)
+        {
+            <tr>
+                <td>@employee.Fecha</td>
+                <td style="text-align:center">@employee.Picker</td>
+                <td style="text-align:center">@employee.Cantidad</td>
+                <td style="text-align:center">@employee.CantidadPiezas</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

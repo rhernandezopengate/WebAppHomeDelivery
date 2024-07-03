@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_A3F19C_OGModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="hd_status_ordenes_guias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="hd_ordenes_guias" Relationship="DB_A3F19C_OGModel1.hd_ordenes_guias_hd_status_ordenes_guias_FK" FromRole="hd_status_ordenes_guias" ToRole="hd_ordenes_guias" />
+  </EntityType>
+  <EntityContainer Name="DB_A3F19C_OGEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="hd_status_ordenes_guias" EntityType="Self.hd_status_ordenes_guias" />
+    <EntitySet Name="AspNetUsers" EntityType="DB_A3F19C_OGModel1.AspNetUsers" />
+    <EntitySet Name="hd_ordenes_guias" EntityType="DB_A3F19C_OGModel1.hd_ordenes_guias" />
+    <AssociationSet Name="hd_ordenes_guias_AspNetUsers_FK" Association="DB_A3F19C_OGModel1.hd_ordenes_guias_AspNetUsers_FK">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="hd_ordenes_guias" EntitySet="hd_ordenes_guias" />
+    </AssociationSet>
+    <AssociationSet Name="hd_ordenes_guias_hd_status_ordenes_guias_FK" Association="DB_A3F19C_OGModel1.hd_ordenes_guias_hd_status_ordenes_guias_FK">
+      <End Role="hd_status_ordenes_guias" EntitySet="hd_status_ordenes_guias" />
+      <End Role="hd_ordenes_guias" EntitySet="hd_ordenes_guias" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="hd_ordenes_guias" Relationship="DB_A3F19C_OGModel1.hd_ordenes_guias_AspNetUsers_FK" FromRole="AspNetUsers" ToRole="hd_ordenes_guias" />
+  </EntityType>
+  <EntityType Name="hd_ordenes_guias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+    <Property Name="Guia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Orden" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AspNetUsers_Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="hd_status_ordenes_guias_Id" Type="Int32" Nullable="false" />
+    <Property Name="FechaCierre" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_OGModel1.hd_ordenes_guias_AspNetUsers_FK" FromRole="hd_ordenes_guias" ToRole="AspNetUsers" />
+    <NavigationProperty Name="hd_status_ordenes_guias" Relationship="DB_A3F19C_OGModel1.hd_ordenes_guias_hd_status_ordenes_guias_FK" FromRole="hd_ordenes_guias" ToRole="hd_status_ordenes_guias" />
+  </EntityType>
+  <Association Name="hd_ordenes_guias_AspNetUsers_FK">
+    <End Type="DB_A3F19C_OGModel1.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel1.hd_ordenes_guias" Role="hd_ordenes_guias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hd_ordenes_guias">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hd_ordenes_guias_hd_status_ordenes_guias_FK">
+    <End Type="DB_A3F19C_OGModel1.hd_status_ordenes_guias" Role="hd_status_ordenes_guias" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel1.hd_ordenes_guias" Role="hd_ordenes_guias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hd_status_ordenes_guias">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hd_ordenes_guias">
+        <PropertyRef Name="hd_status_ordenes_guias_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

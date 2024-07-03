@@ -1,0 +1,66 @@
+﻿@model WebAppHD.Models.hd_ordenes_guias
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>hd_ordenes_guias</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAlta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Guia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Guia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUsers_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUsers_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hd_status_ordenes_guias_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hd_status_ordenes_guias_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCierre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCierre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

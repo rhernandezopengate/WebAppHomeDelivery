@@ -1,0 +1,110 @@
+﻿@using WebAppHD.Models
+@model List<ErroresCargaOrdenes>
+
+@{
+    ViewBag.Title = "Importar";
+}
+
+<br />
+@using (Html.BeginForm("Importar", "hd_ordenes_guias", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading"><b>Cargar Ordenes - Guias </b></div>
+        <div class="panel-body">
+            <div class="form-inline">
+                <div class="form-group">
+                    <input type="file" name="postedFile" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-floppy-disk"></i> Cargar
+                </button>
+
+                <a class="btn btn-danger" href="@Url.Action("Index", "reportes")">
+                    <i class="glyphicon glyphicon-remove-sign"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Model.Count() > 0)
+{
+    <br />
+    <div class="row">
+        <div class="col-lg-12">
+            @if (ViewBag.Mensaje == "Error")
+            {
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <strong>Error!</strong> Revise la informacion del archivo con los datos de la tabla.
+                </div>
+            }
+        </div>
+
+        <div class="col-lg-4">
+
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>Folio</th>
+                    <th>SKU</th>
+                    <th>Error</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td>@item.Folio</td>
+                <td>@item.SKU</td>
+                <td>@item.Error</td>
+            </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+    
+}
+else
+{
+    if (ViewBag.Mensaje == "Inicio")
+    {
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <strong>Cargue la Informacion!</strong>
+        </div>
+    }
+    else if (ViewBag.Mensaje == "Correcto")
+    {
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <strong>Excelente!</strong> La informacion ha sido cargada correctamente.
+        </div>
+    }
+    else if (ViewBag.Mensaje == "No se encontraron ordenes nuevas")
+    {
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <strong>Revise el archivo!</strong> No se encontraron ordenes nuevas
+        </div>
+    }    
+    else if (ViewBag.Mensaje == "Error Cargar Ordenes")
+    {
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <strong>Revise el archivo!</strong> Error al agregar el detalle de las ordenes
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <strong>Error de sistema!</strong> @ViewBag.Mensaje
+        </div>
+    }
+}
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $(this).html('Loading...');
+                $(this).addClass('disabled');
+            });
+        });
+    </script>
+}

@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "ReporteGraficaPuntos";
+}
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading"><b>Surtido Diario de Ordenes HD </b></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="form-inline">
+                <div class="form-group mb-2">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="txtMes" class="sr-only">Mes</label>
+                    <input type="text" id="txtMes" placeholder="Mes" class="form-control" />
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="txtAnio" class="sr-only">Password</label>
+                    <input type="text" id="txtAnio" placeholder="Año" class="form-control" />
+                    <button id="btnConsulta" class="btn btn-primary mb-2">Consultar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div id="dvOrdenes"></div>
+    </div>
+    <div class="col-lg-8">
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    </div>
+</div>
+
+<div id="MyModal" class="modal fade in" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg" id="mdialTamanio">
+        <div class="modal-content">
+            <div id="MyModalContent">
+                <div class="modal-header">
+                    <div class="text-center">
+                        <b>BUSCANDO INFORMACION </b>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="~/Images/loading.gif" class="icon" width="100px" />
+                        <h5><span class="modal-text">Procesando, Espere por favor... </span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $('#btnConsulta').click(function (e) {
+
+            var mes = $("#txtMes").val();
+            var anio = $("#txtAnio").val();
+
+            e.preventDefault();
+
+            $("#MyModal").modal('show');
+
+            $.ajax({
+                "url": "/reportes/ConteoOrdenes",
+                type: "POST",
+                data: { _mes: mes, _anio: anio },
+                success: function (response, status) {
+                    $("#dvOrdenes").html(response);
+                    $("#MyModal").modal('hide');
+                }
+            });
+
+            var dataPoints = [];
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light2",
+                title: {
+                    text: ""
+                },
+                axisY: {
+                    title: "Ordenes",
+                    titleFontSize: 24,
+                    prefix: "",
+                    crosshair: {
+                        enabled: true,
+                        valueFormatString: "#,##0.##",
+                        snapToDataPoint: true
+                    }
+                },
+                axisX: {
+                    crosshair: {
+                        enabled: true,
+                        snapToDataPoint: true
+                    }
+                },
+                data: [{
+                    type: "line",
+                    yValueFormatString: "#,##0.##",
+                    xValueFormatString: "DD/MM/YYYY",
+                    dataPoints: dataPoints
+                }]
+            });
+
+            function addData(data) {
+                for (var i = 0; i < data.length; i++) {
+                    dataPoints.push({
+                        x: new Date(data[i].x),
+                        y: data[i].y
+                    });
+                }
+                chart.render();
+            }
+
+            $.getJSON("/reportes/JSONView?_mes=" + mes + "&_anio=" + anio, addData);
+
+        });
+
+    </script>
+    
+    <script src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+}

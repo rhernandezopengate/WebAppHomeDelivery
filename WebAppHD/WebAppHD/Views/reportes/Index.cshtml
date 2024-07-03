@@ -1,0 +1,320 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <b> Busqueda Ordenes</b>
+        <a class="btn btn-sm btn-primary" href="@Url.Action("CargarCorte", "corte")">
+            <i class="glyphicon glyphicon-cloud-upload"></i> Cargar Corte
+        </a>
+        <a class="btn btn-sm btn-warning" href="@Url.Action("CargarConciliador", "conciliador")">
+            <i class="glyphicon glyphicon-open"></i> Cargar Conciliador
+        </a>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-3">
+                <input type="text" id="txtFechaAlta" placeholder="Fecha" class="form-control" autocomplete="off" />
+            </div>
+            <div class="col-lg-3">
+                <select class="form-control" id="ddlStatusOrden"></select>
+            </div>
+            <div class="col-lg-3">
+                <input type="text" id="txtOrden" placeholder="Orden" class="form-control" autocomplete="off" />
+            </div>
+            <div class="col-lg-3">
+                <input type="text" id="txtGuia" placeholder="Guia" class="form-control" autocomplete="off" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-3">
+                <input type="text" id="txtFechaCierreInicio" placeholder="Fecha Cierre Inicio" class="form-control" autocomplete="off" />
+            </div>
+            <div class="col-lg-3">
+                <input type="text" id="txtFechaCierreFin" placeholder="Fecha Cierre Fin" class="form-control" autocomplete="off" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<table id="tblBusquedaOrdenes" class="table table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fecha Alta</th>
+            <th>Orden</th>
+            <th>Guia</th>
+            <th>Estatus</th>
+            <th>Fecha Cierre</th>
+            <th>Picker</th>
+            <th>Auditor</th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+
+<div id="MyModal" class="modal fade in">
+    <div class="modal-dialog modal-lg" id="mdialTamanio">
+        <div class="modal-content">
+            <div id="MyModalContent"></div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS -->
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+
+@section Scripts
+{
+    <!-- JS -->
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
+
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script src="~/Scripts/toastr.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            table = $('#tblBusquedaOrdenes').DataTable({
+                "order": [[0, "desc"]],
+                "ordering": true,
+                "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                "pagingType": 'full_numbers',
+                "pageLength": 5,
+                "language": {
+                    oPaginate: {
+                        sNext: '<i class="fa fa-forward">>></i>',
+                        sPrevious: '<i class="fa fa-backward"><<</i>',
+                        sFirst: '<i class="fa fa-step-backward">Primero</i>',
+                        sLast: '<i class="fa fa-step-forward">Ultimo</i>'
+                    }
+                },
+                "dom": 'Blrtip',
+                "processing": true,
+                "serverSide": true,
+                "deferRender": true,
+                "rowId": 'Id',
+                "buttons": [
+                    {
+                        extend: 'excelHtml5',
+
+                    },
+                ],
+                "ajax": {
+                    "url": "/reportes/ReporteOrdenesCerradas",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "aoColumns": [
+                    {
+                        "data": "Id",
+                        "autoWidth": false,
+                        "sWidth": "3%",
+                        "visible": false
+                    },
+                    {
+                        "data": "FechaAlta",
+                        "autoWidth": false,
+                        "sWidth": "13%"
+                    },
+                    {
+                        "data": "Orden",
+                        "autoWidth": false,
+                        "sWidth": "10%"
+                    },
+                    {
+                        "data": "Guia",
+                        "autoWidth": false,
+                        "sWidth": "15%"
+                    },
+                    {
+                        "data": "Estatus",
+                        "autoWidth": false,
+                        "sWidth": "5%"
+                    },
+                    {
+                        "data": "FechaCierre",
+                        "autoWidth": false,
+                        "sWidth": "13%"
+                    },
+                    {
+                        "data": "Picker",
+                        "autoWidth": false,
+                        "sWidth": "8%"
+                    },
+                    {
+                        "data": "Auditor",
+                        "autoWidth": false,
+                        "sWidth": "8%"
+                    },
+                    {
+                        "data": null,
+                        "targets": -1,
+                        "render": function (data, type, full) {
+                            return "<a  onclick='Edit(" + full['Id'] + ")' id='btnEdit" + full['Id'] + "' class='btn btn-sm btn-primary'><i class='glyphicon glyphicon-pencil'></i></a>" +
+                                " <button onclick='Details(" + full['Id'] + ")' class='btn btn-sm btn-info '><i class='glyphicon glyphicon-list-alt'></i></button>" +
+                                " <button onclick='Delete(" + full['Id'] + ")' class='btn btn-sm btn-danger '><i class='glyphicon glyphicon-trash'></i></button>";
+                        },
+                        "bSearchable": false,
+                        "sortable": false,
+                        "autoWidth": true,
+                        "sWidth": "10%"
+                    },
+                ]
+            });
+
+            $('#txtFechaAlta').on('change', function () {
+                table.columns(0).search(this.value).draw();
+            });
+
+            $('#ddlStatusOrden').on('change', function () {
+                table.columns(1).search(this.value).draw();
+            });
+
+            $('#txtOrden').on('keyup', function () {
+                table.columns(2).search(this.value).draw();
+            });
+
+            $('#txtGuia').on('keyup', function () {
+                table.columns(3).search(this.value).draw();
+            });
+
+            $('#txtFechaCierreInicio').on('change', function () {
+                table.columns(4).search(this.value).draw();
+            });
+
+            $('#txtFechaCierreFin').on('change', function () {
+                table.columns(5).search(this.value).draw();
+            });
+        });
+
+        $(function () {
+            $("#txtFechaAlta").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+
+        $(function () {
+            $("#txtFechaCierreInicio").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+
+        $(function () {
+            $("#txtFechaCierreFin").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+
+        $(function () {
+            var ddlCustomers = $("#ddlStatusOrden");
+            ddlCustomers.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading ...</option>');
+            $.ajax({
+                type: "POST",
+                url: "/statusordenimpresas/ListaStatus",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    ddlCustomers.empty().append('<option selected="selected" value="0">Seleccione una opcion...</option>');
+                    $.each(response, function () {
+                        ddlCustomers.append($("<option></option>").val(this['Value']).html(this['Text']));
+                    });
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+
+        var Edit = function (ID) {
+            $.ajaxSetup({ cache: false });
+            var EditUrl = "/ordenes/Edit/" + ID;
+            $("#MyModalContent").load(EditUrl, function () {
+                $("#MyModal").modal({
+                    //backdrop: 'static',
+                    keyboard: false
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        }
+
+        var Details = function (ID) {
+            $.ajaxSetup({ cache: false });
+            var EditUrl = "/ordenes/Details/" + ID;
+            $("#MyModalContent").load(EditUrl, function () {
+                $("#MyModal").modal({
+                    //backdrop: 'static',
+                    keyboard: false
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        }
+
+        var Delete = function (ID) {
+            $.ajaxSetup({ cache: false });
+            var EditUrl = "/ordenes/Delete/" + ID;
+            $("#MyModalContent").load(EditUrl, function () {
+                $("#MyModal").modal({
+                    //backdrop: 'static',
+                    keyboard: false
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        }
+
+        function bindForm(dialog) {
+            $('form', dialog).submit(function () {
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        if (result.success) {
+                            $("#MyModal").modal('hide');
+                            toastr.success(result.message);
+                            table.draw();
+                        }
+                        else {
+                            $("#MyModal").modal('show');
+                            toastr.error(result.message);
+                            bindForm(dialog);
+                        }
+                    },
+                    error: function (xml, message, text) {
+                        toastr.error("Msg: " + message + ", Text: " + text);
+                    }
+                });
+                return false;
+            });
+        }
+
+    </script>
+}

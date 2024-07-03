@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "EliminarCorte";
+}
+<br />
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-default">
+        <div class="panel-heading"><b>Eliminar Corte </b></div>
+        <div class="panel-body">
+            <div class="form-inline">
+                <div class="form-group">
+                    <input id="corte" name="corte" class="form-control" />
+                </div>
+                <input type="submit" value="Validar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@if (ViewBag.Mensaje == "Inicio")
+{
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <strong>Cargue la Informacion!</strong>
+    </div>
+}
+else if (ViewBag.Mensaje == "Correcto")
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <strong>Excelente!</strong> La informacion ha sido eliminada correctamente.
+    </div>
+}

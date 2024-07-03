@@ -1,0 +1,145 @@
+﻿@model WebAppHD.Models.ordenes
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = null;
+}
+
+<div class="modal-header text-center">
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Eliminar Orden</h4>
+    <h4>
+        <label>@Model.Orden</label>
+    </h4>
+</div>
+
+<div class="modal-body">
+    <div class="well" style="overflow: auto">
+        <div class="col-sm-3">
+            Fecha Alta
+            <div class="form-group">
+                <div class="input-group date">
+                    <input id="datepicker_from" name="datepicker_from" class="form-control hasDatepicker" value="@Model.FechaAlta.Value.ToShortDateString()" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            Orden
+            <div class="form-group">
+                <div class="input-group date">
+                    <input id="datepicker_from" name="datepicker_from" class="form-control hasDatepicker" value="@Model.Orden" disabled>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            Guia
+            <div class="form-group">
+                <div class="input-group date">
+                    <input id="datepicker_from" name="datepicker_from" class="form-control hasDatepicker" value="@Model.Guia" disabled>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            Oracle ID
+            <div class="form-group">
+                <div class="input-group date">
+                    <input id="datepicker_from" name="datepicker_from" class="form-control hasDatepicker" value="@Model.User" disabled>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            Estatus
+            <div class="form-group">
+                <div class="input-group date">
+                    <input id="datepicker_from" name="datepicker_from" class="form-control hasDatepicker" value="@Model.statusordenimpresa.descripcion" disabled>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            Picker
+            <div class="form-group">
+                <div class="input-group date">
+                    <input id="datepicker_from" name="datepicker_from" class="form-control hasDatepicker" value="@Model.Picker" disabled>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            Auditor
+            <div class="form-group">
+                <div class="input-group date">
+                    <input id="datepicker_from" name="datepicker_from" class="form-control hasDatepicker" value="@Model.Auditor" disabled>
+
+                </div>
+            </div>
+        </div>
+
+        @if (Model.FechaCierre != null)
+        {
+            <div class="col-sm-3">
+                Fecha Cierre
+                <div class="form-group">
+                    <div class="input-group date">
+                        <input id="datepicker_from" name="datepicker_from" class="form-control hasDatepicker" value="@Model.FechaCierre.Value.ToShortDateString()" disabled>
+
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-3">
+                Fecha Cierre
+                <div class="form-group">
+                    <div class="input-group date">
+                        <input id="datepicker_from" name="datepicker_from" class="form-control hasDatepicker" disabled>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <table class="table table-bordered text-center" align="center">
+        <thead>
+            <tr>
+                <th class="text-center">Cantidad</th>
+                <th class="text-center">SKU</th>
+                <th class="text-center">Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Detalle)
+            {
+                <tr>
+                    <td>
+                        @item.cantidad
+                    </td>
+                    <td>
+                        @item.SKU
+                    </td>
+                    <td>
+                        @item.SKUDescripcion
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>
+<div class="modal-footer">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    }
+</div>
+

@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\rhern\\source\\repos\\WebAppHD\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6C764884-8F82-4EFF-B706-CFB61AAACCBD}|WebAppHD\\WebAppHD.csproj|c:\\users\\rhern\\source\\repos\\webapphd\\webapphd\\controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C764884-8F82-4EFF-B706-CFB61AAACCBD}|WebAppHD\\WebAppHD.csproj|solutionrelative:webapphd\\controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C764884-8F82-4EFF-B706-CFB61AAACCBD}|WebAppHD\\WebAppHD.csproj|C:\\Users\\rhern\\source\\repos\\WebAppHD\\webapphd\\controllers\\conciliadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C764884-8F82-4EFF-B706-CFB61AAACCBD}|WebAppHD\\WebAppHD.csproj|solutionrelative:webapphd\\controllers\\conciliadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C764884-8F82-4EFF-B706-CFB61AAACCBD}|WebAppHD\\WebAppHD.csproj|C:\\Users\\rhern\\source\\repos\\WebAppHD\\webapphd\\views\\reportes\\productividad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C764884-8F82-4EFF-B706-CFB61AAACCBD}|WebAppHD\\WebAppHD.csproj|solutionrelative:webapphd\\views\\reportes\\productividad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C764884-8F82-4EFF-B706-CFB61AAACCBD}|WebAppHD\\WebAppHD.csproj|C:\\Users\\rhern\\source\\repos\\WebAppHD\\webapphd\\controllers\\rt_paquetecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C764884-8F82-4EFF-B706-CFB61AAACCBD}|WebAppHD\\WebAppHD.csproj|solutionrelative:webapphd\\controllers\\rt_paquetecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "conciliadorController.cs",
+              "DocumentMoniker": "C:\\Users\\rhern\\source\\repos\\WebAppHD\\WebAppHD\\Controllers\\conciliadorController.cs",
+              "RelativeDocumentMoniker": "WebAppHD\\Controllers\\conciliadorController.cs",
+              "ToolTip": "C:\\Users\\rhern\\source\\repos\\WebAppHD\\WebAppHD\\Controllers\\conciliadorController.cs",
+              "RelativeToolTip": "WebAppHD\\Controllers\\conciliadorController.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAYwFQAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T18:09:44.791Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Productividad.cshtml",
+              "DocumentMoniker": "C:\\Users\\rhern\\source\\repos\\WebAppHD\\WebAppHD\\Views\\reportes\\Productividad.cshtml",
+              "RelativeDocumentMoniker": "WebAppHD\\Views\\reportes\\Productividad.cshtml",
+              "ToolTip": "C:\\Users\\rhern\\source\\repos\\WebAppHD\\WebAppHD\\Views\\reportes\\Productividad.cshtml",
+              "RelativeToolTip": "WebAppHD\\Views\\reportes\\Productividad.cshtml",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAAAGgAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-02T18:07:23.858Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "reportesController.cs",
+              "DocumentMoniker": "C:\\Users\\rhern\\source\\repos\\WebAppHD\\WebAppHD\\Controllers\\reportesController.cs",
+              "RelativeDocumentMoniker": "WebAppHD\\Controllers\\reportesController.cs",
+              "ToolTip": "C:\\Users\\rhern\\source\\repos\\WebAppHD\\WebAppHD\\Controllers\\reportesController.cs",
+              "RelativeToolTip": "WebAppHD\\Controllers\\reportesController.cs",
+              "ViewState": "AQIAAHgBAAAAAAAAAAAwwJYBAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T18:05:15.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "rt_paqueteController.cs",
+              "DocumentMoniker": "C:\\Users\\rhern\\source\\repos\\WebAppHD\\WebAppHD\\Controllers\\rt_paqueteController.cs",
+              "RelativeDocumentMoniker": "WebAppHD\\Controllers\\rt_paqueteController.cs",
+              "ToolTip": "C:\\Users\\rhern\\source\\repos\\WebAppHD\\WebAppHD\\Controllers\\rt_paqueteController.cs",
+              "RelativeToolTip": "WebAppHD\\Controllers\\rt_paqueteController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T18:05:11.749Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

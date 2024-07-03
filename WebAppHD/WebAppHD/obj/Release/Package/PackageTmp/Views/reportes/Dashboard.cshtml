@@ -1,0 +1,26 @@
+﻿@model List<WebAppHD.Models.Dashboard>
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Orden Index</th>
+            <th>Orden CSR</th>
+            <th>Conciliador</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Orden </td>
+            <td>@item.OrdenCSR </td>
+            <td>@item.GuiaConciliador </td>
+        </tr>
+        }
+    </tbody>
+</table>

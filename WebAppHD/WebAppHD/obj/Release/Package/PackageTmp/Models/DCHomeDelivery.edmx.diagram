@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="47e0c3d9fa004df6afb7fff4d66a188b" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.ordenes" Width="1.5" PointX="5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statusordenimpresa" Width="1.75" PointX="7.125" PointY="0.625" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordenes_statusordenimpresa_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.codigoqrordenes" Width="1.75" PointX="2.625" PointY="0.5" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.codigoqrordenes_ordenes_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.detordenproductoshd" Width="1.5" PointX="7.125" PointY="3.5" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detordenesproductos_ordenes_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.erroresordenes" Width="1.5" PointX="2.625" PointY="3.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.tipoerror" Width="1.5" PointX="0.5" PointY="3.625" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.erroresordenes_ordenes_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.erroresordenes_tipoerror_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.guias" Width="1.5" PointX="5" PointY="0.5" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.guias_ordenes_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.skusbenavides" Width="1.5" PointX="11.5" PointY="3.75" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.detusuariosordenes" Width="1.5" PointX="5" PointY="6.75" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.usuarios" Width="1.5" PointX="2.5" PointY="6.625" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detusuariosordenes_ordenes_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detusuariosordenes_usuarios_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.detkitskus" Width="1.5" PointX="9.5" PointY="6.875" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.kit" Width="1.5" PointX="7.25" PointY="6.875" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detkitskus_kit_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.csr" Width="1.5" PointX="10.625" PointY="10.125" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.rt_det_paquetes_skus" Width="1.5" PointX="9.375" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.rt_paquete" Width="1.5" PointX="11.375" PointY="0.5" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.rt_det_paquetes_skus_rt_paquete_FK" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.skus" Width="1.5" PointX="9.375" PointY="3.125" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detkitskus_skus_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detordenesproductos_skus_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.rt_det_paquetes_skus_skus_FK" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.skusbenavides_skus_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.pickers" Width="1.5" PointX="3" PointY="9.875" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statuspickers" Width="1.5" PointX="5" PointY="9.875" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.FK_pickers_statuspickers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Open Gate Logistics</title>    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="~/Images/logo.jpg" width="100px"/>                
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                AOVS <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Reportes</li>
+                                <li><a href="@Url.Action("Index", "reportes")">Ordenes </a></li>
+                                <li><a href="@Url.Action("Index", "conciliador")">Conciliador </a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Movimientos</li>
+                                <li><a href="@Url.Action("EliminarCorte", "corte")">Eliminar Corte </a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Retornos <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="@Url.Action("Index", "rt_paquete")">Retornos </a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Ordenes VS Guias <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="@Url.Action("Index", "hd_ordenes_guias")">Ordenes - Guias </a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Reportes <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">AOVS</li>
+                                <li><a href="@Url.Action("Productividad", "reportes")">Dashboard </a></li>
+                                <li><a href="@Url.Action("PiezasOrdenesCerradas", "reportes")">Piezas por Orden</a></li>
+                                <li><a href="@Url.Action("ProductividadesDashboard", "reportes")">Productividades</a></li>
+                                <li><a href="@Url.Action("ReporteGraficaPuntos", "reportes")">Grafica de Puntos </a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Configuraciones <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Ordenes VS Guias</li>
+                                <li><a href="@Url.Action("Index", "hd_status_ordenes_guias")">Status Ordenes </a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">AOVS</li>
+                                <li><a href="@Url.Action("Index", "pickers")">Pickers </a></li>
+                                <li><a href="@Url.Action("Index", "usuarios")">Auditores</a></li>
+                                <li><a href="@Url.Action("Index", "skus")">SKUS</a></li>
+                                <li><a href="@Url.Action("Index", "skusbenavides")">SKUS Benavides</a></li>
+                                <li><a href="@Url.Action("Index", "kits")">KITS</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else if (User.IsInRole("supervisorhd"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                AOVS <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">AOVS</li>
+                                <li><a href="@Url.Action("Index", "reportes")">Ordenes </a></li>
+                                <li><a href="@Url.Action("Index", "conciliador")">Conciliador </a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Movimientos</li>
+                                <li><a href="@Url.Action("EliminarCorte", "corte")">Eliminar Corte </a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Retornos <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="@Url.Action("Index", "rt_paquete")">Retornos </a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Reportes <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">AOVS</li>
+                                <li><a href="@Url.Action("Productividad", "reportes")">Dashboard </a></li>
+                                <li><a href="@Url.Action("PiezasOrdenesCerradas", "reportes")">Piezas por Orden</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else if (User.IsInRole("auxiliarhd"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                AOVS <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Reportes</li>
+                                <li><a href="@Url.Action("Index", "reportes")">Ordenes </a></li>
+                                <li><a href="@Url.Action("Index", "conciliador")">Conciliador </a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Movimientos</li>
+                                <li><a href="@Url.Action("EliminarCorte", "corte")">Eliminar Corte </a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Reportes <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">AOVS</li>
+                                <li><a href="@Url.Action("Productividad", "reportes")">Dashboard </a></li>
+                                <li><a href="@Url.Action("PiezasOrdenesCerradas", "reportes")">Piezas por Orden</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else if (User.IsInRole("teamleaderhd"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                AOVS <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Reportes</li>
+                                <li><a href="@Url.Action("Index", "reportes")">Ordenes </a></li>
+                                <li><a href="@Url.Action("Index", "conciliador")">Conciliador </a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Movimientos</li>
+                                <li><a href="@Url.Action("EliminarCorte", "corte")">Eliminar Corte </a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Retornos <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="@Url.Action("Index", "rt_paquete")">Retornos </a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Reportes <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">AOVS</li>
+                                <li><a href="@Url.Action("Productividad", "reportes")">Dashboard </a></li>
+                                <li><a href="@Url.Action("PiezasOrdenesCerradas", "reportes")">Piezas por Orden</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else if (User.IsInRole("gerentegeneral"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                AOVS <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Reportes</li>
+                                <li><a href="@Url.Action("Index", "reportes")">Ordenes </a></li>
+                                <li><a href="@Url.Action("Index", "conciliador")">Conciliador </a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Movimientos</li>
+                                <li><a href="@Url.Action("EliminarCorte", "corte")">Eliminar Corte </a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Retornos <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="@Url.Action("Index", "rt_paquete")">Retornos </a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Reportes <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">AOVS</li>
+                                <li><a href="@Url.Action("Productividad", "reportes")">Dashboard </a></li>
+                                <li><a href="@Url.Action("PiezasOrdenesCerradas", "reportes")">Piezas por Orden</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else if (User.IsInRole("coordinadorinventarios"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                AOVS <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Reportes</li>
+                                <li><a href="@Url.Action("Index", "reportes")">Ordenes </a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Reportes <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">AOVS</li>
+                                <li><a href="@Url.Action("Productividad", "reportes")">Dashboard </a></li>
+                                <li><a href="@Url.Action("PiezasOrdenesCerradas", "reportes")">Piezas por Orden</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Retornos <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="@Url.Action("Index", "rt_paquete")">Retornos </a></li>
+                            </ul>
+                        </li>
+                    }
+                    else if (User.IsInRole("analistainventarios"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                AOVS <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Reportes</li>
+                                <li><a href="@Url.Action("Index", "reportes")">Ordenes </a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Reportes <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">AOVS</li>
+                                <li><a href="@Url.Action("Productividad", "reportes")">Dashboard </a></li>
+                                <li><a href="@Url.Action("PiezasOrdenesCerradas", "reportes")">Piezas por Orden</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else if (User.IsInRole("direcciongeneral"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                AOVS <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Reportes</li>
+                                <li><a href="@Url.Action("Productividad", "reportes")">Dashboard </a></li>
+                            </ul>
+                        </li>
+                    }
+                    else if (User.IsInRole("finanzas"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                AOVS <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Reportes</li>
+                                <li><a href="@Url.Action("Productividad", "reportes")">Dashboard </a></li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Open Gate Logistics</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

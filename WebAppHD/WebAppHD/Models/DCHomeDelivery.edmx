@@ -1,0 +1,1185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_A3F19C_OGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="codigoqrordenes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoQR" Type="varchar" MaxLength="100" />
+          <Property Name="Ordenes_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="csr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroCuenta" Type="varchar" MaxLength="50" />
+          <Property Name="Guia" Type="varchar" MaxLength="50" />
+          <Property Name="PieceID" Type="varchar" MaxLength="50" />
+          <Property Name="Referencia" Type="varchar" MaxLength="50" />
+          <Property Name="IATAOrigen" Type="varchar" MaxLength="50" />
+          <Property Name="CiudadOrigen" Type="varchar(max)" />
+          <Property Name="IATADestino" Type="varchar" MaxLength="50" />
+          <Property Name="CiudadDestino" Type="varchar" MaxLength="50" />
+          <Property Name="SVCSubIATA" Type="varchar" MaxLength="50" />
+          <Property Name="Ruta" Type="varchar" MaxLength="50" />
+          <Property Name="Piezas" Type="int" />
+          <Property Name="Peso" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FechaRecoleccion" Type="date" />
+          <Property Name="FechaPrimerCheckpointTerminal" Type="date" />
+          <Property Name="HoraPrimerCheckpointTerminal" Type="varchar" MaxLength="50" />
+          <Property Name="PrimerCheckpointTerminal" Type="varchar" MaxLength="50" />
+          <Property Name="DescripcionPrimerCheckTerminal" Type="varchar" MaxLength="100" />
+          <Property Name="DetallesEntregaComentarios" Type="varchar(max)" />
+          <Property Name="TiempoTransitoEstimado" Type="int" />
+          <Property Name="TiempoTransitoRealizado" Type="int" />
+          <Property Name="IntentosEntrega" Type="int" />
+          <Property Name="CausaDemora" Type="varchar(max)" />
+          <Property Name="FechaIngresoCC" Type="date" />
+          <Property Name="DiasCC" Type="int" />
+          <Property Name="Producto" Type="varchar" MaxLength="50" />
+          <Property Name="ValorSeguro" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NombreRemitente" Type="varchar" MaxLength="100" />
+          <Property Name="ContactoRemitente" Type="varchar" MaxLength="100" />
+          <Property Name="DireccionRemitente" Type="varchar(max)" />
+          <Property Name="CPRemitente" Type="varchar" MaxLength="50" />
+          <Property Name="NombreDestinatario" Type="varchar(max)" />
+          <Property Name="ContactoDestinatario" Type="varchar(max)" />
+          <Property Name="DireccionDestinatario" Type="varchar(max)" />
+          <Property Name="CPDestinatario" Type="varchar" MaxLength="50" />
+          <Property Name="UltimoCheckpoint" Type="varchar" MaxLength="50" />
+          <Property Name="FechaUltimoCheckpoint" Type="date" />
+          <Property Name="HoraUltimoCheckpoint" Type="varchar" MaxLength="50" />
+          <Property Name="detalleultimocheckpoint" Type="varchar(max)" />
+          <Property Name="FechaCarga" Type="date" />
+        </EntityType>
+        <EntityType Name="detkitskus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Kit_Id" Type="int" Nullable="false" />
+          <Property Name="Skus_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="detordenproductoshd">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ordenes_Id" Type="int" Nullable="false" />
+          <Property Name="Skus_Id" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
+        </EntityType>
+        <EntityType Name="detusuariosordenes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuarios_Id" Type="int" Nullable="false" />
+          <Property Name="Ordenes_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="erroresordenes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ordenes_Id" Type="int" Nullable="false" />
+          <Property Name="TipoError_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="guias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guia" Type="varchar" MaxLength="50" />
+          <Property Name="Ordenes_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ordenes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="Orden" Type="varchar" MaxLength="20" />
+          <Property Name="User" Type="varchar" MaxLength="200" />
+          <Property Name="StatusOrdenImpresa_Id" Type="int" Nullable="false" />
+          <Property Name="Picker" Type="varchar" MaxLength="100" />
+          <Property Name="FechaCierre" Type="datetime" />
+        </EntityType>
+        <EntityType Name="pickers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="statuspickers_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="rt_det_paquetes_skus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="rt_paquete_Id" Type="int" Nullable="false" />
+          <Property Name="skus_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rt_paquete">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="Guia" Type="varchar" MaxLength="50" />
+          <Property Name="Paquete" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="skus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sku" Type="varchar(max)" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="uom" Type="varchar" MaxLength="50" />
+          <Property Name="codigobarras" Type="varchar" MaxLength="50" />
+          <Property Name="codigobidimensional" Type="char" MaxLength="2" />
+          <Property Name="qtymanual" Type="char" MaxLength="2" />
+          <Property Name="kit" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="skusbenavides">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" />
+          <Property Name="skus_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="statusordenimpresa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="statuspickers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tipoerror">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="tipousuario" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="codigoqrordenes_ordenes_fk">
+          <End Role="ordenes" Type="Self.ordenes" Multiplicity="1" />
+          <End Role="codigoqrordenes" Type="Self.codigoqrordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="codigoqrordenes">
+              <PropertyRef Name="Ordenes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detkitskus_kit_fk">
+          <End Role="kit" Type="Self.kit" Multiplicity="1" />
+          <End Role="detkitskus" Type="Self.detkitskus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detkitskus">
+              <PropertyRef Name="Kit_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detkitskus_skus_fk">
+          <End Role="skus" Type="Self.skus" Multiplicity="1" />
+          <End Role="detkitskus" Type="Self.detkitskus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detkitskus">
+              <PropertyRef Name="Skus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detordenesproductos_ordenes_fk">
+          <End Role="ordenes" Type="Self.ordenes" Multiplicity="1" />
+          <End Role="detordenproductoshd" Type="Self.detordenproductoshd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detordenproductoshd">
+              <PropertyRef Name="Ordenes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detordenesproductos_skus_fk">
+          <End Role="skus" Type="Self.skus" Multiplicity="1" />
+          <End Role="detordenproductoshd" Type="Self.detordenproductoshd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detordenproductoshd">
+              <PropertyRef Name="Skus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detusuariosordenes_ordenes_fk">
+          <End Role="ordenes" Type="Self.ordenes" Multiplicity="1" />
+          <End Role="detusuariosordenes" Type="Self.detusuariosordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detusuariosordenes">
+              <PropertyRef Name="Ordenes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detusuariosordenes_usuarios_fk">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="detusuariosordenes" Type="Self.detusuariosordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detusuariosordenes">
+              <PropertyRef Name="Usuarios_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="erroresordenes_ordenes_fk">
+          <End Role="ordenes" Type="Self.ordenes" Multiplicity="1" />
+          <End Role="erroresordenes" Type="Self.erroresordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="erroresordenes">
+              <PropertyRef Name="Ordenes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="erroresordenes_tipoerror_fk">
+          <End Role="tipoerror" Type="Self.tipoerror" Multiplicity="1" />
+          <End Role="erroresordenes" Type="Self.erroresordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoerror">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="erroresordenes">
+              <PropertyRef Name="TipoError_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pickers_statuspickers">
+          <End Role="statuspickers" Type="Self.statuspickers" Multiplicity="0..1" />
+          <End Role="pickers" Type="Self.pickers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statuspickers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="pickers">
+              <PropertyRef Name="statuspickers_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="guias_ordenes_fk">
+          <End Role="ordenes" Type="Self.ordenes" Multiplicity="1" />
+          <End Role="guias" Type="Self.guias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="guias">
+              <PropertyRef Name="Ordenes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ordenes_statusordenimpresa_fk">
+          <End Role="statusordenimpresa" Type="Self.statusordenimpresa" Multiplicity="1" />
+          <End Role="ordenes" Type="Self.ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusordenimpresa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ordenes">
+              <PropertyRef Name="StatusOrdenImpresa_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rt_det_paquetes_skus_rt_paquete_FK">
+          <End Role="rt_paquete" Type="Self.rt_paquete" Multiplicity="1" />
+          <End Role="rt_det_paquetes_skus" Type="Self.rt_det_paquetes_skus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rt_paquete">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="rt_det_paquetes_skus">
+              <PropertyRef Name="rt_paquete_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rt_det_paquetes_skus_skus_FK">
+          <End Role="skus" Type="Self.skus" Multiplicity="1" />
+          <End Role="rt_det_paquetes_skus" Type="Self.rt_det_paquetes_skus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rt_det_paquetes_skus">
+              <PropertyRef Name="skus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="skusbenavides_skus_fk">
+          <End Role="skus" Type="Self.skus" Multiplicity="1" />
+          <End Role="skusbenavides" Type="Self.skusbenavides" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skusbenavides">
+              <PropertyRef Name="skus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_A3F19C_OGModelStoreContainer">
+          <EntitySet Name="codigoqrordenes" EntityType="Self.codigoqrordenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="csr" EntityType="Self.csr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detkitskus" EntityType="Self.detkitskus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detordenproductoshd" EntityType="Self.detordenproductoshd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detusuariosordenes" EntityType="Self.detusuariosordenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="erroresordenes" EntityType="Self.erroresordenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="guias" EntityType="Self.guias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kit" EntityType="Self.kit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ordenes" EntityType="Self.ordenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pickers" EntityType="Self.pickers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rt_det_paquetes_skus" EntityType="Self.rt_det_paquetes_skus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rt_paquete" EntityType="Self.rt_paquete" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="skus" EntityType="Self.skus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="skusbenavides" EntityType="Self.skusbenavides" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statusordenimpresa" EntityType="Self.statusordenimpresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statuspickers" EntityType="Self.statuspickers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipoerror" EntityType="Self.tipoerror" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="codigoqrordenes_ordenes_fk" Association="Self.codigoqrordenes_ordenes_fk">
+            <End Role="ordenes" EntitySet="ordenes" />
+            <End Role="codigoqrordenes" EntitySet="codigoqrordenes" />
+          </AssociationSet>
+          <AssociationSet Name="detkitskus_kit_fk" Association="Self.detkitskus_kit_fk">
+            <End Role="kit" EntitySet="kit" />
+            <End Role="detkitskus" EntitySet="detkitskus" />
+          </AssociationSet>
+          <AssociationSet Name="detkitskus_skus_fk" Association="Self.detkitskus_skus_fk">
+            <End Role="skus" EntitySet="skus" />
+            <End Role="detkitskus" EntitySet="detkitskus" />
+          </AssociationSet>
+          <AssociationSet Name="detordenesproductos_ordenes_fk" Association="Self.detordenesproductos_ordenes_fk">
+            <End Role="ordenes" EntitySet="ordenes" />
+            <End Role="detordenproductoshd" EntitySet="detordenproductoshd" />
+          </AssociationSet>
+          <AssociationSet Name="detordenesproductos_skus_fk" Association="Self.detordenesproductos_skus_fk">
+            <End Role="skus" EntitySet="skus" />
+            <End Role="detordenproductoshd" EntitySet="detordenproductoshd" />
+          </AssociationSet>
+          <AssociationSet Name="detusuariosordenes_ordenes_fk" Association="Self.detusuariosordenes_ordenes_fk">
+            <End Role="ordenes" EntitySet="ordenes" />
+            <End Role="detusuariosordenes" EntitySet="detusuariosordenes" />
+          </AssociationSet>
+          <AssociationSet Name="detusuariosordenes_usuarios_fk" Association="Self.detusuariosordenes_usuarios_fk">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="detusuariosordenes" EntitySet="detusuariosordenes" />
+          </AssociationSet>
+          <AssociationSet Name="erroresordenes_ordenes_fk" Association="Self.erroresordenes_ordenes_fk">
+            <End Role="ordenes" EntitySet="ordenes" />
+            <End Role="erroresordenes" EntitySet="erroresordenes" />
+          </AssociationSet>
+          <AssociationSet Name="erroresordenes_tipoerror_fk" Association="Self.erroresordenes_tipoerror_fk">
+            <End Role="tipoerror" EntitySet="tipoerror" />
+            <End Role="erroresordenes" EntitySet="erroresordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pickers_statuspickers" Association="Self.FK_pickers_statuspickers">
+            <End Role="statuspickers" EntitySet="statuspickers" />
+            <End Role="pickers" EntitySet="pickers" />
+          </AssociationSet>
+          <AssociationSet Name="guias_ordenes_fk" Association="Self.guias_ordenes_fk">
+            <End Role="ordenes" EntitySet="ordenes" />
+            <End Role="guias" EntitySet="guias" />
+          </AssociationSet>
+          <AssociationSet Name="ordenes_statusordenimpresa_fk" Association="Self.ordenes_statusordenimpresa_fk">
+            <End Role="statusordenimpresa" EntitySet="statusordenimpresa" />
+            <End Role="ordenes" EntitySet="ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="rt_det_paquetes_skus_rt_paquete_FK" Association="Self.rt_det_paquetes_skus_rt_paquete_FK">
+            <End Role="rt_paquete" EntitySet="rt_paquete" />
+            <End Role="rt_det_paquetes_skus" EntitySet="rt_det_paquetes_skus" />
+          </AssociationSet>
+          <AssociationSet Name="rt_det_paquetes_skus_skus_FK" Association="Self.rt_det_paquetes_skus_skus_FK">
+            <End Role="skus" EntitySet="skus" />
+            <End Role="rt_det_paquetes_skus" EntitySet="rt_det_paquetes_skus" />
+          </AssociationSet>
+          <AssociationSet Name="skusbenavides_skus_fk" Association="Self.skusbenavides_skus_fk">
+            <End Role="skus" EntitySet="skus" />
+            <End Role="skusbenavides" EntitySet="skusbenavides" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_A3F19C_OGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ordenes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="Orden" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="User" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="StatusOrdenImpresa_Id" Type="Int32" Nullable="false" />
+          <Property Name="Picker" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCierre" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="statusordenimpresa" Relationship="DB_A3F19C_OGModel.ordenes_statusordenimpresa_fk" FromRole="ordenes" ToRole="statusordenimpresa" />
+          <NavigationProperty Name="codigoqrordenes" Relationship="DB_A3F19C_OGModel.codigoqrordenes_ordenes_fk" FromRole="ordenes" ToRole="codigoqrordenes" />
+          <NavigationProperty Name="detordenproductoshd" Relationship="DB_A3F19C_OGModel.detordenesproductos_ordenes_fk" FromRole="ordenes" ToRole="detordenproductoshd" />
+          <NavigationProperty Name="erroresordenes" Relationship="DB_A3F19C_OGModel.erroresordenes_ordenes_fk" FromRole="ordenes" ToRole="erroresordenes" />
+          <NavigationProperty Name="guias" Relationship="DB_A3F19C_OGModel.guias_ordenes_fk" FromRole="ordenes" ToRole="guias" />
+          <NavigationProperty Name="detusuariosordenes" Relationship="DB_A3F19C_OGModel.detusuariosordenes_ordenes_fk" FromRole="ordenes" ToRole="detusuariosordenes" />
+        </EntityType>
+        <EntityContainer Name="DB_A3F19C_OGEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ordenes" EntityType="Self.ordenes" />
+          <EntitySet Name="statusordenimpresa" EntityType="DB_A3F19C_OGModel.statusordenimpresa" />
+          <AssociationSet Name="ordenes_statusordenimpresa_fk" Association="DB_A3F19C_OGModel.ordenes_statusordenimpresa_fk">
+            <End Role="statusordenimpresa" EntitySet="statusordenimpresa" />
+            <End Role="ordenes" EntitySet="ordenes" />
+          </AssociationSet>
+          <EntitySet Name="codigoqrordenes" EntityType="DB_A3F19C_OGModel.codigoqrordenes" />
+          <AssociationSet Name="codigoqrordenes_ordenes_fk" Association="DB_A3F19C_OGModel.codigoqrordenes_ordenes_fk">
+            <End Role="ordenes" EntitySet="ordenes" />
+            <End Role="codigoqrordenes" EntitySet="codigoqrordenes" />
+          </AssociationSet>
+          <EntitySet Name="detordenproductoshd" EntityType="DB_A3F19C_OGModel.detordenproductoshd" />
+          <AssociationSet Name="detordenesproductos_ordenes_fk" Association="DB_A3F19C_OGModel.detordenesproductos_ordenes_fk">
+            <End Role="ordenes" EntitySet="ordenes" />
+            <End Role="detordenproductoshd" EntitySet="detordenproductoshd" />
+          </AssociationSet>
+          <EntitySet Name="erroresordenes" EntityType="DB_A3F19C_OGModel.erroresordenes" />
+          <EntitySet Name="tipoerror" EntityType="DB_A3F19C_OGModel.tipoerror" />
+          <AssociationSet Name="erroresordenes_ordenes_fk" Association="DB_A3F19C_OGModel.erroresordenes_ordenes_fk">
+            <End Role="ordenes" EntitySet="ordenes" />
+            <End Role="erroresordenes" EntitySet="erroresordenes" />
+          </AssociationSet>
+          <AssociationSet Name="erroresordenes_tipoerror_fk" Association="DB_A3F19C_OGModel.erroresordenes_tipoerror_fk">
+            <End Role="tipoerror" EntitySet="tipoerror" />
+            <End Role="erroresordenes" EntitySet="erroresordenes" />
+          </AssociationSet>
+          <EntitySet Name="guias" EntityType="DB_A3F19C_OGModel.guias" />
+          <AssociationSet Name="guias_ordenes_fk" Association="DB_A3F19C_OGModel.guias_ordenes_fk">
+            <End Role="ordenes" EntitySet="ordenes" />
+            <End Role="guias" EntitySet="guias" />
+          </AssociationSet>
+          <EntitySet Name="skusbenavides" EntityType="DB_A3F19C_OGModel.skusbenavides" />
+          <EntitySet Name="detusuariosordenes" EntityType="DB_A3F19C_OGModel.detusuariosordenes" />
+          <EntitySet Name="usuarios" EntityType="DB_A3F19C_OGModel.usuarios" />
+          <AssociationSet Name="detusuariosordenes_ordenes_fk" Association="DB_A3F19C_OGModel.detusuariosordenes_ordenes_fk">
+            <End Role="ordenes" EntitySet="ordenes" />
+            <End Role="detusuariosordenes" EntitySet="detusuariosordenes" />
+          </AssociationSet>
+          <AssociationSet Name="detusuariosordenes_usuarios_fk" Association="DB_A3F19C_OGModel.detusuariosordenes_usuarios_fk">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="detusuariosordenes" EntitySet="detusuariosordenes" />
+          </AssociationSet>
+          <EntitySet Name="detkitskus" EntityType="DB_A3F19C_OGModel.detkitskus" />
+          <EntitySet Name="kit" EntityType="DB_A3F19C_OGModel.kit" />
+          <AssociationSet Name="detkitskus_kit_fk" Association="DB_A3F19C_OGModel.detkitskus_kit_fk">
+            <End Role="kit" EntitySet="kit" />
+            <End Role="detkitskus" EntitySet="detkitskus" />
+          </AssociationSet>
+          <EntitySet Name="csr" EntityType="DB_A3F19C_OGModel.csr" />
+          <EntitySet Name="rt_det_paquetes_skus" EntityType="DB_A3F19C_OGModel.rt_det_paquetes_skus" />
+          <EntitySet Name="rt_paquete" EntityType="DB_A3F19C_OGModel.rt_paquete" />
+          <AssociationSet Name="rt_det_paquetes_skus_rt_paquete_FK" Association="DB_A3F19C_OGModel.rt_det_paquetes_skus_rt_paquete_FK">
+            <End Role="rt_paquete" EntitySet="rt_paquete" />
+            <End Role="rt_det_paquetes_skus" EntitySet="rt_det_paquetes_skus" />
+          </AssociationSet>
+          <EntitySet Name="skus" EntityType="DB_A3F19C_OGModel.skus" />
+          <AssociationSet Name="detkitskus_skus_fk" Association="DB_A3F19C_OGModel.detkitskus_skus_fk">
+            <End Role="skus" EntitySet="skus" />
+            <End Role="detkitskus" EntitySet="detkitskus" />
+          </AssociationSet>
+          <AssociationSet Name="detordenesproductos_skus_fk" Association="DB_A3F19C_OGModel.detordenesproductos_skus_fk">
+            <End Role="skus" EntitySet="skus" />
+            <End Role="detordenproductoshd" EntitySet="detordenproductoshd" />
+          </AssociationSet>
+          <AssociationSet Name="rt_det_paquetes_skus_skus_FK" Association="DB_A3F19C_OGModel.rt_det_paquetes_skus_skus_FK">
+            <End Role="skus" EntitySet="skus" />
+            <End Role="rt_det_paquetes_skus" EntitySet="rt_det_paquetes_skus" />
+          </AssociationSet>
+          <AssociationSet Name="skusbenavides_skus_fk" Association="DB_A3F19C_OGModel.skusbenavides_skus_fk">
+            <End Role="skus" EntitySet="skus" />
+            <End Role="skusbenavides" EntitySet="skusbenavides" />
+          </AssociationSet>
+          <EntitySet Name="pickers" EntityType="DB_A3F19C_OGModel.pickers" />
+          <EntitySet Name="statuspickers" EntityType="DB_A3F19C_OGModel.statuspickers" />
+          <AssociationSet Name="FK_pickers_statuspickers" Association="DB_A3F19C_OGModel.FK_pickers_statuspickers">
+            <End Role="statuspickers" EntitySet="statuspickers" />
+            <End Role="pickers" EntitySet="pickers" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="statusordenimpresa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ordenes" Relationship="DB_A3F19C_OGModel.ordenes_statusordenimpresa_fk" FromRole="statusordenimpresa" ToRole="ordenes" />
+        </EntityType>
+        <Association Name="ordenes_statusordenimpresa_fk">
+          <End Type="DB_A3F19C_OGModel.statusordenimpresa" Role="statusordenimpresa" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.ordenes" Role="ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusordenimpresa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ordenes">
+              <PropertyRef Name="StatusOrdenImpresa_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="codigoqrordenes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoQR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Ordenes_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ordenes" Relationship="DB_A3F19C_OGModel.codigoqrordenes_ordenes_fk" FromRole="codigoqrordenes" ToRole="ordenes" />
+        </EntityType>
+        <Association Name="codigoqrordenes_ordenes_fk">
+          <End Type="DB_A3F19C_OGModel.ordenes" Role="ordenes" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.codigoqrordenes" Role="codigoqrordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="codigoqrordenes">
+              <PropertyRef Name="Ordenes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="detordenproductoshd">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ordenes_Id" Type="Int32" Nullable="false" />
+          <Property Name="Skus_Id" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <NavigationProperty Name="ordenes" Relationship="DB_A3F19C_OGModel.detordenesproductos_ordenes_fk" FromRole="detordenproductoshd" ToRole="ordenes" />
+          <NavigationProperty Name="skus" Relationship="DB_A3F19C_OGModel.detordenesproductos_skus_fk" FromRole="detordenproductoshd" ToRole="skus" />
+        </EntityType>
+        <Association Name="detordenesproductos_ordenes_fk">
+          <End Type="DB_A3F19C_OGModel.ordenes" Role="ordenes" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.detordenproductoshd" Role="detordenproductoshd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detordenproductoshd">
+              <PropertyRef Name="Ordenes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="erroresordenes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ordenes_Id" Type="Int32" Nullable="false" />
+          <Property Name="TipoError_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ordenes" Relationship="DB_A3F19C_OGModel.erroresordenes_ordenes_fk" FromRole="erroresordenes" ToRole="ordenes" />
+          <NavigationProperty Name="tipoerror" Relationship="DB_A3F19C_OGModel.erroresordenes_tipoerror_fk" FromRole="erroresordenes" ToRole="tipoerror" />
+        </EntityType>
+        <EntityType Name="tipoerror">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="erroresordenes" Relationship="DB_A3F19C_OGModel.erroresordenes_tipoerror_fk" FromRole="tipoerror" ToRole="erroresordenes" />
+        </EntityType>
+        <Association Name="erroresordenes_ordenes_fk">
+          <End Type="DB_A3F19C_OGModel.ordenes" Role="ordenes" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.erroresordenes" Role="erroresordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="erroresordenes">
+              <PropertyRef Name="Ordenes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="erroresordenes_tipoerror_fk">
+          <End Type="DB_A3F19C_OGModel.tipoerror" Role="tipoerror" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.erroresordenes" Role="erroresordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoerror">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="erroresordenes">
+              <PropertyRef Name="TipoError_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="guias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ordenes_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ordenes" Relationship="DB_A3F19C_OGModel.guias_ordenes_fk" FromRole="guias" ToRole="ordenes" />
+        </EntityType>
+        <Association Name="guias_ordenes_fk">
+          <End Type="DB_A3F19C_OGModel.ordenes" Role="ordenes" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.guias" Role="guias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="guias">
+              <PropertyRef Name="Ordenes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="skusbenavides">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="skus_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="skus" Relationship="DB_A3F19C_OGModel.skusbenavides_skus_fk" FromRole="skusbenavides" ToRole="skus" />
+        </EntityType>
+        <EntityType Name="detusuariosordenes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuarios_Id" Type="Int32" Nullable="false" />
+          <Property Name="Ordenes_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ordenes" Relationship="DB_A3F19C_OGModel.detusuariosordenes_ordenes_fk" FromRole="detusuariosordenes" ToRole="ordenes" />
+          <NavigationProperty Name="usuarios" Relationship="DB_A3F19C_OGModel.detusuariosordenes_usuarios_fk" FromRole="detusuariosordenes" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipousuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="detusuariosordenes" Relationship="DB_A3F19C_OGModel.detusuariosordenes_usuarios_fk" FromRole="usuarios" ToRole="detusuariosordenes" />
+        </EntityType>
+        <Association Name="detusuariosordenes_ordenes_fk">
+          <End Type="DB_A3F19C_OGModel.ordenes" Role="ordenes" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.detusuariosordenes" Role="detusuariosordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detusuariosordenes">
+              <PropertyRef Name="Ordenes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detusuariosordenes_usuarios_fk">
+          <End Type="DB_A3F19C_OGModel.usuarios" Role="usuarios" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.detusuariosordenes" Role="detusuariosordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detusuariosordenes">
+              <PropertyRef Name="Usuarios_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="detkitskus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Kit_Id" Type="Int32" Nullable="false" />
+          <Property Name="Skus_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="kit" Relationship="DB_A3F19C_OGModel.detkitskus_kit_fk" FromRole="detkitskus" ToRole="kit" />
+          <NavigationProperty Name="skus" Relationship="DB_A3F19C_OGModel.detkitskus_skus_fk" FromRole="detkitskus" ToRole="skus" />
+        </EntityType>
+        <EntityType Name="kit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="detkitskus" Relationship="DB_A3F19C_OGModel.detkitskus_kit_fk" FromRole="kit" ToRole="detkitskus" />
+        </EntityType>
+        <Association Name="detkitskus_kit_fk">
+          <End Type="DB_A3F19C_OGModel.kit" Role="kit" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.detkitskus" Role="detkitskus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detkitskus">
+              <PropertyRef Name="Kit_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="csr">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroCuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Guia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PieceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IATAOrigen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CiudadOrigen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IATADestino" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CiudadDestino" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SVCSubIATA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ruta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Piezas" Type="Int32" />
+          <Property Name="Peso" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FechaRecoleccion" Type="DateTime" Precision="0" />
+          <Property Name="FechaPrimerCheckpointTerminal" Type="DateTime" Precision="0" />
+          <Property Name="HoraPrimerCheckpointTerminal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PrimerCheckpointTerminal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DescripcionPrimerCheckTerminal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DetallesEntregaComentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TiempoTransitoEstimado" Type="Int32" />
+          <Property Name="TiempoTransitoRealizado" Type="Int32" />
+          <Property Name="IntentosEntrega" Type="Int32" />
+          <Property Name="CausaDemora" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaIngresoCC" Type="DateTime" Precision="0" />
+          <Property Name="DiasCC" Type="Int32" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ValorSeguro" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NombreRemitente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactoRemitente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionRemitente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CPRemitente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NombreDestinatario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContactoDestinatario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionDestinatario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CPDestinatario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UltimoCheckpoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaUltimoCheckpoint" Type="DateTime" Precision="0" />
+          <Property Name="HoraUltimoCheckpoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="detalleultimocheckpoint" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCarga" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="rt_det_paquetes_skus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="rt_paquete_Id" Type="Int32" Nullable="false" />
+          <Property Name="skus_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="rt_paquete" Relationship="DB_A3F19C_OGModel.rt_det_paquetes_skus_rt_paquete_FK" FromRole="rt_det_paquetes_skus" ToRole="rt_paquete" />
+          <NavigationProperty Name="skus" Relationship="DB_A3F19C_OGModel.rt_det_paquetes_skus_skus_FK" FromRole="rt_det_paquetes_skus" ToRole="skus" />
+        </EntityType>
+        <EntityType Name="rt_paquete">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="Guia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Paquete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rt_det_paquetes_skus" Relationship="DB_A3F19C_OGModel.rt_det_paquetes_skus_rt_paquete_FK" FromRole="rt_paquete" ToRole="rt_det_paquetes_skus" />
+        </EntityType>
+        <Association Name="rt_det_paquetes_skus_rt_paquete_FK">
+          <End Type="DB_A3F19C_OGModel.rt_paquete" Role="rt_paquete" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.rt_det_paquetes_skus" Role="rt_det_paquetes_skus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rt_paquete">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="rt_det_paquetes_skus">
+              <PropertyRef Name="rt_paquete_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="skus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sku" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="uom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codigobarras" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codigobidimensional" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="qtymanual" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="kit" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="detkitskus" Relationship="DB_A3F19C_OGModel.detkitskus_skus_fk" FromRole="skus" ToRole="detkitskus" />
+          <NavigationProperty Name="detordenproductoshd" Relationship="DB_A3F19C_OGModel.detordenesproductos_skus_fk" FromRole="skus" ToRole="detordenproductoshd" />
+          <NavigationProperty Name="rt_det_paquetes_skus" Relationship="DB_A3F19C_OGModel.rt_det_paquetes_skus_skus_FK" FromRole="skus" ToRole="rt_det_paquetes_skus" />
+          <NavigationProperty Name="skusbenavides" Relationship="DB_A3F19C_OGModel.skusbenavides_skus_fk" FromRole="skus" ToRole="skusbenavides" />
+        </EntityType>
+        <Association Name="detkitskus_skus_fk">
+          <End Type="DB_A3F19C_OGModel.skus" Role="skus" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.detkitskus" Role="detkitskus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detkitskus">
+              <PropertyRef Name="Skus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detordenesproductos_skus_fk">
+          <End Type="DB_A3F19C_OGModel.skus" Role="skus" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.detordenproductoshd" Role="detordenproductoshd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detordenproductoshd">
+              <PropertyRef Name="Skus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rt_det_paquetes_skus_skus_FK">
+          <End Type="DB_A3F19C_OGModel.skus" Role="skus" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.rt_det_paquetes_skus" Role="rt_det_paquetes_skus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rt_det_paquetes_skus">
+              <PropertyRef Name="skus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="skusbenavides_skus_fk">
+          <End Type="DB_A3F19C_OGModel.skus" Role="skus" Multiplicity="1" />
+          <End Type="DB_A3F19C_OGModel.skusbenavides" Role="skusbenavides" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skusbenavides">
+              <PropertyRef Name="skus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="pickers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="statuspickers_Id" Type="Int32" />
+          <NavigationProperty Name="statuspickers" Relationship="DB_A3F19C_OGModel.FK_pickers_statuspickers" FromRole="pickers" ToRole="statuspickers" />
+        </EntityType>
+        <EntityType Name="statuspickers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="pickers" Relationship="DB_A3F19C_OGModel.FK_pickers_statuspickers" FromRole="statuspickers" ToRole="pickers" />
+        </EntityType>
+        <Association Name="FK_pickers_statuspickers">
+          <End Type="DB_A3F19C_OGModel.statuspickers" Role="statuspickers" Multiplicity="0..1" />
+          <End Type="DB_A3F19C_OGModel.pickers" Role="pickers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statuspickers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="pickers">
+              <PropertyRef Name="statuspickers_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_A3F19C_OGModelStoreContainer" CdmEntityContainer="DB_A3F19C_OGEntities">
+          <EntitySetMapping Name="ordenes">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.ordenes">
+              <MappingFragment StoreEntitySet="ordenes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="StatusOrdenImpresa_Id" ColumnName="StatusOrdenImpresa_Id" />
+                <ScalarProperty Name="Picker" ColumnName="Picker" />
+                <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statusordenimpresa">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.statusordenimpresa">
+              <MappingFragment StoreEntitySet="statusordenimpresa">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="codigoqrordenes">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.codigoqrordenes">
+              <MappingFragment StoreEntitySet="codigoqrordenes">
+                <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+                <ScalarProperty Name="CodigoQR" ColumnName="CodigoQR" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detordenproductoshd">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.detordenproductoshd">
+              <MappingFragment StoreEntitySet="detordenproductoshd">
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="Skus_Id" ColumnName="Skus_Id" />
+                <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="erroresordenes">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.erroresordenes">
+              <MappingFragment StoreEntitySet="erroresordenes">
+                <ScalarProperty Name="TipoError_Id" ColumnName="TipoError_Id" />
+                <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoerror">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.tipoerror">
+              <MappingFragment StoreEntitySet="tipoerror">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="guias">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.guias">
+              <MappingFragment StoreEntitySet="guias">
+                <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+                <ScalarProperty Name="Guia" ColumnName="Guia" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skusbenavides">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.skusbenavides">
+              <MappingFragment StoreEntitySet="skusbenavides">
+                <ScalarProperty Name="skus_Id" ColumnName="skus_Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detusuariosordenes">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.detusuariosordenes">
+              <MappingFragment StoreEntitySet="detusuariosordenes">
+                <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+                <ScalarProperty Name="Usuarios_Id" ColumnName="Usuarios_Id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="tipousuario" ColumnName="tipousuario" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detkitskus">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.detkitskus">
+              <MappingFragment StoreEntitySet="detkitskus">
+                <ScalarProperty Name="Skus_Id" ColumnName="Skus_Id" />
+                <ScalarProperty Name="Kit_Id" ColumnName="Kit_Id" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kit">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.kit">
+              <MappingFragment StoreEntitySet="kit">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="csr">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.csr">
+              <MappingFragment StoreEntitySet="csr">
+                <ScalarProperty Name="FechaCarga" ColumnName="FechaCarga" />
+                <ScalarProperty Name="detalleultimocheckpoint" ColumnName="detalleultimocheckpoint" />
+                <ScalarProperty Name="HoraUltimoCheckpoint" ColumnName="HoraUltimoCheckpoint" />
+                <ScalarProperty Name="FechaUltimoCheckpoint" ColumnName="FechaUltimoCheckpoint" />
+                <ScalarProperty Name="UltimoCheckpoint" ColumnName="UltimoCheckpoint" />
+                <ScalarProperty Name="CPDestinatario" ColumnName="CPDestinatario" />
+                <ScalarProperty Name="DireccionDestinatario" ColumnName="DireccionDestinatario" />
+                <ScalarProperty Name="ContactoDestinatario" ColumnName="ContactoDestinatario" />
+                <ScalarProperty Name="NombreDestinatario" ColumnName="NombreDestinatario" />
+                <ScalarProperty Name="CPRemitente" ColumnName="CPRemitente" />
+                <ScalarProperty Name="DireccionRemitente" ColumnName="DireccionRemitente" />
+                <ScalarProperty Name="ContactoRemitente" ColumnName="ContactoRemitente" />
+                <ScalarProperty Name="NombreRemitente" ColumnName="NombreRemitente" />
+                <ScalarProperty Name="ValorSeguro" ColumnName="ValorSeguro" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="DiasCC" ColumnName="DiasCC" />
+                <ScalarProperty Name="FechaIngresoCC" ColumnName="FechaIngresoCC" />
+                <ScalarProperty Name="CausaDemora" ColumnName="CausaDemora" />
+                <ScalarProperty Name="IntentosEntrega" ColumnName="IntentosEntrega" />
+                <ScalarProperty Name="TiempoTransitoRealizado" ColumnName="TiempoTransitoRealizado" />
+                <ScalarProperty Name="TiempoTransitoEstimado" ColumnName="TiempoTransitoEstimado" />
+                <ScalarProperty Name="DetallesEntregaComentarios" ColumnName="DetallesEntregaComentarios" />
+                <ScalarProperty Name="DescripcionPrimerCheckTerminal" ColumnName="DescripcionPrimerCheckTerminal" />
+                <ScalarProperty Name="PrimerCheckpointTerminal" ColumnName="PrimerCheckpointTerminal" />
+                <ScalarProperty Name="HoraPrimerCheckpointTerminal" ColumnName="HoraPrimerCheckpointTerminal" />
+                <ScalarProperty Name="FechaPrimerCheckpointTerminal" ColumnName="FechaPrimerCheckpointTerminal" />
+                <ScalarProperty Name="FechaRecoleccion" ColumnName="FechaRecoleccion" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Piezas" ColumnName="Piezas" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="SVCSubIATA" ColumnName="SVCSubIATA" />
+                <ScalarProperty Name="CiudadDestino" ColumnName="CiudadDestino" />
+                <ScalarProperty Name="IATADestino" ColumnName="IATADestino" />
+                <ScalarProperty Name="CiudadOrigen" ColumnName="CiudadOrigen" />
+                <ScalarProperty Name="IATAOrigen" ColumnName="IATAOrigen" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="PieceID" ColumnName="PieceID" />
+                <ScalarProperty Name="Guia" ColumnName="Guia" />
+                <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rt_det_paquetes_skus">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.rt_det_paquetes_skus">
+              <MappingFragment StoreEntitySet="rt_det_paquetes_skus">
+                <ScalarProperty Name="skus_Id" ColumnName="skus_Id" />
+                <ScalarProperty Name="rt_paquete_Id" ColumnName="rt_paquete_Id" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rt_paquete">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.rt_paquete">
+              <MappingFragment StoreEntitySet="rt_paquete">
+                <ScalarProperty Name="Paquete" ColumnName="Paquete" />
+                <ScalarProperty Name="Guia" ColumnName="Guia" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skus">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.skus">
+              <MappingFragment StoreEntitySet="skus">
+                <ScalarProperty Name="kit" ColumnName="kit" />
+                <ScalarProperty Name="qtymanual" ColumnName="qtymanual" />
+                <ScalarProperty Name="codigobidimensional" ColumnName="codigobidimensional" />
+                <ScalarProperty Name="codigobarras" ColumnName="codigobarras" />
+                <ScalarProperty Name="uom" ColumnName="uom" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pickers">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.pickers">
+              <MappingFragment StoreEntitySet="pickers">
+                <ScalarProperty Name="statuspickers_Id" ColumnName="statuspickers_Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statuspickers">
+            <EntityTypeMapping TypeName="DB_A3F19C_OGModel.statuspickers">
+              <MappingFragment StoreEntitySet="statuspickers">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

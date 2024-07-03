@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "ProductividadesDashboard";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading"><b>Productividades </b></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="form-inline">
+                <div class="form-group mb-2">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="txtMes" class="sr-only">Mes</label>
+                    <input type="text" id="txtMes" placeholder="Mes" class="form-control" />
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="txtAnio" class="sr-only">Password</label>
+                    <input type="text" id="txtAnio" placeholder="Año" class="form-control" />
+                    <button id="btnConsulta" class="btn btn-primary mb-2">Consultar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b> Productividades Pickers</b></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div id="dvProductividadesPickers"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b> Productividades Auditores</b></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div id="dvProductividadesAuditores"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="MyModal" class="modal fade in" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg" id="mdialTamanio">
+        <div class="modal-content">
+            <div id="MyModalContent">
+                <div class="modal-header">
+                    <div class="text-center">
+                        <b>BUSCANDO INFORMACION </b>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="~/Images/loading.gif" class="icon" width="100px" />
+                        <h5><span class="modal-text">Procesando, Espere por favor... </span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $('#btnConsulta').click(function (e) {
+
+            var mes = $("#txtMes").val();
+            var anio = $("#txtAnio").val();
+
+            e.preventDefault();
+
+            $("#MyModal").modal('show');
+
+            $.ajax({
+                "url": "/reportes/ProductividadPickers",
+                type: "POST",
+                data: { mes: mes, anio: anio },
+                success: function (response, status) {
+                    $("#dvProductividadesPickers").html(response);
+                    
+                }
+            });
+
+            $.ajax({
+                "url": "/reportes/ProductividadesAuditores",
+                type: "POST",
+                data: { mes: mes, anio: anio },
+                success: function (response, status) {
+                    $("#dvProductividadesAuditores").html(response);
+                    $("#MyModal").modal('hide');
+                }
+            });           
+        });
+    </script>
+}
